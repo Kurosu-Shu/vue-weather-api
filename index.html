@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Weather App</title>
+    <link href="./style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <section id="app">
+        <div :class="weather.main != null && Math.round(weather.main.temp) < 16 ? 'cold': 'hot'" v-cloak>
+            <form @submit.prevent=" fetchWeather">
+                <input type="text" class="search-box" placeholder="Enter your city" v-model="searchQuery" />
+            </form>
+            <div v-if="weather.main != null && !isError ">
+                <h4 class="location">{{weather.name}}, {{weather.sys.country}}</h4>
+                <h2> {{getCurrentDate()}}</h2>
+                <div class="bg-glass">
+                    <h1>
+                        {{Math.round(weather.main.temp)}}°<span>C</span>
+                    </h1>
+                </div>
+                <h5 class="weather">{{weather.weather[0].main}}</h5>
+            </div>
+            <div v-else-if="isError">
+                <p>
+                    {{errorMsg}}
+                </p>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
