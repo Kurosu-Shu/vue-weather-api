@@ -1,8 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            apiKey: "9bc6ef24f1d4b7c92d77e029eac4387e",
-            baseApi: "https://api.openweathermap.org/data/2.5/weather",
+            apiKey: "",
+            baseApi: "",
             searchQuery: "Yangon",
             errorMsg: "Please enter valid country or location",
             isError: false,
